@@ -22,7 +22,7 @@ try:
         app_version=__version__,
 #         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
-        connect_retries=None,
+#         connect_retries=None,
     )
 except Exception as e:
     print(f"STRING_SESSION - {e}")
@@ -37,5 +37,5 @@ catub.tgbot = tgbot = CatUserBotClient(
     app_version=__version__,
 #     connection=ConnectionTcpAbridged,
     auto_reconnect=True,
-    connect_retries=None,
+#     connect_retries=None,
 ).start(bot_token=Config.TG_BOT_TOKEN)
