@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+import asyncio
 from telethon._tl import InputMessagesFilterDocument
 
 from ..Config import Config
@@ -45,4 +45,4 @@ if Config.PLUGIN_CHANNEL:
                     f"Installed Plugin `{os.path.basename(downloaded_file_name)}` successfully.",
                 )
 
-    catub.loop.create_task(install())
+    asyncio.run(install())

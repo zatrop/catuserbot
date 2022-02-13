@@ -1,5 +1,5 @@
 import typing
-
+import asyncio
 from telethon._misc import hints
 from telethon import events, _tl
 from telethon.types import _custom
@@ -40,13 +40,13 @@ class NewMessage(events.NewMessage, _custom.Message):
             flag = None
             if not creator and not admin_rights:
                 try:
-                    event.chat = event._client.loop.create_task(event.get_chat())
+                    event.chat = asyncio.run(event.get_chat())
                 except AttributeError:
                     flag = "Null"
 
             if self.incoming:
                 try:
-                    p = event._client.loop.create_task(
+                    p = asyncio.run(
                         event._client.get_permissions(event.chat_id, event.sender_id)
                     )
                     participant = p.participant
@@ -66,7 +66,7 @@ class NewMessage(events.NewMessage, _custom.Message):
             if not is_creator and not is_admin:
                 text = "`I need admin rights to be able to use this command!`"
 
-                event._client.loop.create_task(edit_or_reply(event, text))
+                asyncio.run(edit_or_reply(event, text))
                 return
         return event
 

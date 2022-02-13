@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import asyncio
 from telethon._misc.utils import get_display_name
 
 from userbot import catub
@@ -441,4 +441,4 @@ async def _(event):  # sourcery no-metrics
     await edit_or_reply(event, finalstr, aslink=True, linktext=text)
 
 
-catub.loop.create_task(_init())
+asyncio.run(_init())
