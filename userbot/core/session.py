@@ -38,4 +38,4 @@ catub.tgbot = tgbot = CatUserBotClient(
 #     connection=ConnectionTcpAbridged,
     auto_reconnect=True,
 #     connect_retries=None,
-).start(bot_token=Config.TG_BOT_TOKEN)
+)._start(bot_token=Config.TG_BOT_TOKEN)
