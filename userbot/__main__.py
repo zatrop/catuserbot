@@ -21,14 +21,17 @@ print(f'Licensed under the terms of the {userbot.__license__}')
 
 cmdhr = Config.COMMAND_HAND_LER
 
-try:
-    LOGS.info("Starting Userbot")
-    asyncio.run(setup_bot())
-    LOGS.info("TG Bot Startup Completed")
-except Exception as e:
-    LOGS.error(f"{e}")
-    sys.exit()
+# try:
+#     LOGS.info("Starting Userbot")
+#     asyncio.run(setup_bot())
+#     LOGS.info("TG Bot Startup Completed")
+# except Exception as e:
+#     LOGS.error(f"{e}")
+#     sys.exit()
 
+LOGS.info("Starting Userbot")
+asyncio.run(setup_bot())
+LOGS.info("TG Bot Startup Completed")
 
 async def startup_process():
     await verifyLoggerGroup()
