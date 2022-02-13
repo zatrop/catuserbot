@@ -2,7 +2,7 @@
 Available Commands:
 .otransfer @username"""
 
-import telethon.password as pwd_mod
+import telethon._misc.password as pwd_mod
 from telethon._tl import fn
 
 from userbot import catub
