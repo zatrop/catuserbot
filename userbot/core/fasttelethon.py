@@ -18,8 +18,8 @@ from typing import (
     Union,
 )
 
-from telethon import TelegramClient, helpers
-from telethon._misc import utils
+from telethon import TelegramClient
+from telethon._misc import utils, helpers
 from telethon._crypto import AuthKey
 from telethon.errors import FloodWaitError
 from telethon._network import MTProtoSender
