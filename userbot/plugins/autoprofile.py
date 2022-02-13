@@ -215,8 +215,7 @@ async def bloom_pfploop():
 
 
 async def autoname_loop():
-    AUTONAMESTART = gvarstatus("autoname") == "true"
-    while AUTONAMESTART:
+    while AUTONAMESTART := gvarstatus("autoname") == "true":
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
         name = f"⌚️ {HM}||›  {DEFAULTUSER} ‹||📅 {DM}"
@@ -227,7 +226,6 @@ async def autoname_loop():
             LOGS.warning(str(ex))
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(Config.CHANGE_TIME)
-        AUTONAMESTART = gvarstatus("autoname") == "true"
 
 
 async def autobio_loop():
@@ -670,10 +668,10 @@ async def _(event):  # sourcery no-metrics
         )
 
 
-catub.loop.create_task(autopfp_start())
-catub.loop.create_task(autopicloop())
-catub.loop.create_task(digitalpicloop())
-catub.loop.create_task(bloom_pfploop())
-catub.loop.create_task(autoname_loop())
-catub.loop.create_task(autobio_loop())
-catub.loop.create_task(custompfploop())
+asyncio.run(autopfp_start())
+asyncio.run(autopicloop())
+asyncio.run(digitalpicloop())
+asyncio.run(bloom_pfploop())
+asyncio.run(autoname_loop())
+asyncio.run(autobio_loop())
+asyncio.run(custompfploop())

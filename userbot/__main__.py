@@ -23,7 +23,7 @@ cmdhr = Config.COMMAND_HAND_LER
 
 try:
     LOGS.info("Starting Userbot")
-    catub.loop.run_until_complete(setup_bot())
+    asyncio.run(setup_bot())
     LOGS.info("TG Bot Startup Completed")
 except Exception as e:
     LOGS.error(f"{e}")
@@ -48,8 +48,7 @@ async def startup_process():
     await startupmessage()
     return
 
-
-catub.loop.run_until_complete(startup_process())
+asyncio.run(startup_process())
 
 
 if len(sys.argv) not in (1, 3, 4):
