@@ -33,7 +33,7 @@ async def setup_bot():
         """
     # try:
         await catub.connect()
-        config = await catub(functions.help.GetConfigRequest())
+        config = await catub(functions.help.GetConfig())
         for option in config.dc_options:
             if option.ip_address == catub.session.server_address:
                 if catub.session.dc_id != option.id:
@@ -104,7 +104,7 @@ async def add_bot_to_logger_group(chat_id):
     bot_details = await catub.tgbot.get_me()
     try:
         await catub(
-            functions.messages.AddChatUserRequest(
+            functions.messages.AddChatUser(
                 chat_id=chat_id,
                 user_id=bot_details.username,
                 fwd_limit=1000000,
@@ -113,7 +113,7 @@ async def add_bot_to_logger_group(chat_id):
     except BaseException:
         try:
             await catub(
-                functions.channels.InviteToChannelRequest(
+                functions.channels.InviteToChannel(
                     channel=chat_id,
                     users=[bot_details.username],
                 )
