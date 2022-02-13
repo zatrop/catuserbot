@@ -3,7 +3,7 @@ import functools
 import shlex
 from typing import Tuple
 
-from telethon import functions, types
+from telethon import _tl
 
 from ...core.logger import logging
 
@@ -43,8 +43,8 @@ def runasync(func: callable):
 async def unsavegif(event, sandy):
     try:
         await event.client(
-            functions.messages.SaveGifRequest(
-                id=types.InputDocument(
+            _tl.fn.messages.SaveGifRequest(
+                id=_tl.InputDocument(
                     id=sandy.media.document.id,
                     access_hash=sandy.media.document.access_hash,
                     file_reference=sandy.media.document.file_reference,
