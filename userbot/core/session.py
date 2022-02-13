@@ -29,7 +29,7 @@ except Exception as e:
     sys.exit()
 
 
-tgbot = CatUserBotClient(
+catub.tgbot = tgbot = CatUserBotClient(
     session="TgCatUB",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
