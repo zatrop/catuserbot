@@ -3,7 +3,8 @@ from collections import defaultdict
 from datetime import datetime
 from typing import Optional, Union
 
-from telethon import Button, events
+from telethon.types import Button
+from telethon import events
 from telethon.errors import UserIsBlockedError
 from telethon.events import CallbackQuery, StopPropagation
 from telethon._misc.utils import get_display_name

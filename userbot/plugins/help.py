@@ -1,4 +1,4 @@
-from telethon import functions
+from telethon._tl import fn as functions
 
 from userbot import catub
 

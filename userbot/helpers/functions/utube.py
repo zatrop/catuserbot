@@ -5,7 +5,7 @@ from collections import defaultdict
 
 import ujson
 import youtube_dl
-from telethon import Button
+from telethon.types import Button
 from youtube_dl.utils import DownloadError, ExtractorError, GeoRestrictedError
 from youtubesearchpython import VideosSearch
 

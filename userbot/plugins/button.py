@@ -5,7 +5,7 @@
 import os
 import re
 
-from telethon import Button
+from telethon.types import Button
 
 from ..Config import Config
 from . import catub, edit_delete, reply_id

@@ -4,7 +4,7 @@ import sys
 from datetime import timedelta
 from pathlib import Path
 
-from telethon import Button
+from telethon.types import Button
 from telethon import _tl as types 
 from telethon._tl import fn as functions
 from telethon._misc import utils
