@@ -33,17 +33,17 @@ async def setup_bot():
         """
     # try:
         await catub.connect()
-        config = await catub(functions.help.GetConfig())
-        for option in config.dc_options:
-            if option.ip_address == catub._session.server_address:
-                if catub.session.dc_id != option.id:
-                    LOGS.warning(
-                        f"Fixed DC ID in session from {catub.session.dc_id}"
-                        f" to {option.id}"
-                    )
-                catub.session.set_dc(option.id, option.ip_address, option.port)
-                catub.session.save()
-                break
+#         config = await catub(functions.help.GetConfig())
+#         for option in config.dc_options:
+#             if option.ip_address == catub._session.server_address:
+#                 if catub.session.dc_id != option.id:
+#                     LOGS.warning(
+#                         f"Fixed DC ID in session from {catub.session.dc_id}"
+#                         f" to {option.id}"
+#                     )
+#                 catub.session.set_dc(option.id, option.ip_address, option.port)
+#                 catub.session.save()
+#                 break
         bot_details = await catub.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await catub.start(bot_token=Config.TG_BOT_USERNAME)
