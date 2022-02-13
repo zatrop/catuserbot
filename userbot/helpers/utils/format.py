@@ -2,7 +2,7 @@ import datetime
 
 from bs4 import BeautifulSoup
 from markdown import markdown
-from telethon._tl.tlobject import TLObject
+from telethon._tl import TLObject
 from telethon._tl import MessageEntityPre
 from telethon.utils import add_surrogate
 

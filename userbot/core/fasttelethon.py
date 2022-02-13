@@ -22,7 +22,7 @@ from telethon import TelegramClient, helpers, utils
 from telethon._crypto import AuthKey
 from telethon.errors import FloodWaitError
 from telethon._network import MTProtoSender
-from telethon._tl.alltlobjects import LAYER
+from telethon._tl import LAYER
 from telethon._tl.fn import InvokeWithLayerRequest
 from telethon._tl.fn.auth import (
     ExportAuthorizationRequest,
