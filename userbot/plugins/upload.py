@@ -10,7 +10,7 @@ from pathlib import Path
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon import _tl as types
-from telethon.utils import get_attributes
+from telethon._misc.utils import get_attributes
 
 from userbot import catub
 

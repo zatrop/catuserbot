@@ -9,7 +9,7 @@ from tarfile import is_tarfile
 from tarfile import open as tar_open
 
 from telethon import types
-from telethon.utils import get_extension
+from telethon._misc.utils import get_extension
 
 from ..Config import Config
 from . import catub, edit_delete, edit_or_reply, progress

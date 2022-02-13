@@ -2,7 +2,7 @@ import logging
 from typing import Union
 
 from telethon import _tl as types
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from .events import NewMessage
 

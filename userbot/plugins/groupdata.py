@@ -16,7 +16,7 @@ from telethon._tl import (
     ChannelParticipantsBots,
     MessageActionChannelMigrateFrom,
 )
-from telethon.utils import get_input_location
+from telethon._misc.utils import get_input_location
 
 from userbot import catub
 

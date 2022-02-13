@@ -10,7 +10,7 @@ import requests
 from aiohttp import ClientSession
 from jikanpy import Jikan
 from telethon._tl import DocumentAttributeAnimated
-from telethon.utils import is_video
+from telethon._misc.utils import is_video
 
 from ..progress import readable_time
 from ..tools import post_to_telegraph
@@ -531,7 +531,7 @@ def memory_file(name=None, contents=None, *, temp_bytes=True):
 
 
 def is_gif(file):
-    # ngl this should be fixed, telethon.utils.is_gif but working
+    # ngl this should be fixed, telethon._misc.utils.is_gif but working
     # lazy to go to github and make an issue kek
     if not is_video(file):
         return False

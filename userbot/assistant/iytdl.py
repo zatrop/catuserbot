@@ -15,7 +15,7 @@ import ujson
 from telethon import Button, _tl as types
 from telethon.errors import BotResponseTimeoutError
 from telethon.events import CallbackQuery
-from telethon.utils import get_attributes
+from telethon._misc.utils import get_attributes
 from wget import download
 
 from userbot import catub

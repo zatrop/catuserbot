@@ -4,7 +4,10 @@ import sys
 from datetime import timedelta
 from pathlib import Path
 
-from telethon import Button, functions, types, utils
+from telethon import Button
+from telethon import _tl as types 
+from telethon._tl import fn as functions
+from telethon._misc import utils
 
 from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 

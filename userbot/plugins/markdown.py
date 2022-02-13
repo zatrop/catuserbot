@@ -17,7 +17,7 @@ from telethon._tl import (
     MessageEntityTextUrl,
     MessageEntityUnderline,
 )
-from telethon.utils import add_surrogate, del_surrogate
+from telethon._misc.utils import add_surrogate, del_surrogate
 
 from userbot import catub
 from userbot.core.logger import logging

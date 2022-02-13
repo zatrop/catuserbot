@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from markdown import markdown
 from telethon._tl import TLObject
 from telethon._tl import MessageEntityPre
-from telethon.utils import add_surrogate
+from telethon._misc.utils import add_surrogate
 
 from ..functions.utils import utc_to_local
 from .paste import pastetext

@@ -1,4 +1,4 @@
-from telethon.utils import pack_bot_file_id
+from telethon._misc.utils import pack_bot_file_id
 
 from userbot import catub
 from userbot.core.logger import logging

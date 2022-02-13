@@ -6,7 +6,7 @@ import requests
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.utils import get_extension
+from telethon._misc.utils import get_extension
 from urlextract import URLExtract
 
 from userbot import catub

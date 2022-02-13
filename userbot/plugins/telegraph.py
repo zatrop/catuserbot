@@ -6,7 +6,7 @@ from datetime import datetime
 
 from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from userbot import catub
 

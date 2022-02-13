@@ -18,7 +18,7 @@ from telethon._tl import (
     InputChatPhotoEmpty,
     MessageMediaPhoto,
 )
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from userbot import catub
 

@@ -6,7 +6,7 @@ import os
 from requests import get
 from telethon._tl.fn.photos import GetUserPhotosRequest
 from telethon._tl.fn.users import GetFullUserRequest
-from telethon.utils import get_input_location
+from telethon._misc.utils import get_input_location
 
 from userbot import catub
 from userbot.core.logger import logging

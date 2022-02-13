@@ -8,7 +8,7 @@ from datetime import datetime
 
 from pySmartDL import SmartDL
 from telethon import _tl as types
-from telethon.utils import get_extension
+from telethon._misc.utils import get_extension
 
 from userbot import catub
 

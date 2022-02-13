@@ -1,7 +1,7 @@
 # ported from paperplaneExtended by avinashreddy3108 for media support
 import re
 
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from userbot import catub
 

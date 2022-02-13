@@ -6,7 +6,7 @@ from typing import Optional, Union
 from telethon import Button, events
 from telethon.errors import UserIsBlockedError
 from telethon.events import CallbackQuery, StopPropagation
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from userbot import Config, catub
 

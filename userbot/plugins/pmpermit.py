@@ -4,7 +4,7 @@ from datetime import datetime
 
 from telethon import Button, functions
 from telethon.events import CallbackQuery
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from userbot import catub
 from userbot.core.logger import logging

@@ -2,7 +2,7 @@ import base64
 from asyncio import sleep
 
 # from telethon._tl.fn.messages import ImportChatInviteRequest as Get
-from telethon.utils import get_display_name
+from telethon._misc.utils import get_display_name
 
 from .. import catub
 from ..core.logger import logging
