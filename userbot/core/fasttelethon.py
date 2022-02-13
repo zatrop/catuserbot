@@ -24,7 +24,7 @@ from telethon._crypto import AuthKey
 from telethon.errors import FloodWaitError
 from telethon._network import MTProtoSender
 from telethon._tl import LAYER
-from telethon._tl.fn import InvokeWithLayerRequest
+from telethon._tl.fn import InvokeWithLayer
 from telethon._tl.fn.auth import (
     ExportAuthorizationRequest,
     ImportAuthorizationRequest,
@@ -276,7 +276,7 @@ class ParallelTransferrer:
             self.client._init_request.query = ImportAuthorizationRequest(
                 id=auth.id, bytes=auth.bytes
             )
-            req = InvokeWithLayerRequest(LAYER, self.client._init_request)
+            req = InvokeWithLayer(LAYER, self.client._init_request)
             await sender.send(req)
             self.auth_key = sender.auth_key
         return sender
