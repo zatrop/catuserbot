@@ -82,8 +82,6 @@ class MessageEdited(NewMessage):
                 return
             return cls.Event(update.message)
 
-    class Event(NewMessage.Event):
-        pass
 
 
 async def safe_check_text(msg):  # sourcery no-metrics
