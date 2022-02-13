@@ -33,7 +33,6 @@ async def setup_bot():
         """
     # try:
         await catub.connect()
-        await catub.tgbot.connect()
 #         config = await catub(functions.help.GetConfig())
 #         for option in config.dc_options:
 #             if option.ip_address == catub._session.server_address:
