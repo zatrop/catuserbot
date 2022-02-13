@@ -4,7 +4,7 @@ from collections import defaultdict, deque
 import regex
 from telethon import events
 from telethon import _tl as types
-
+from ..core.events import NewMessage, MessageEdited
 from userbot import catub
 
 from ..Config import Config
@@ -76,12 +76,12 @@ async def group_has_sedbot(group):
     return any(KNOWN_RE_BOTS.match(x.username or "") for x in full.users)
 
 
-@catub.on(events.NewMessage)
+@catub.on(NewMessage)
 async def on_message(event):
     last_msgs[event.chat_id].appendleft(event.message)
 
 
-@catub.on(events.MessageEdited)
+@catub.on(MessageEdited)
 async def on_edit(event):
     for m in last_msgs[event.chat_id]:
         if m.id == event.id:

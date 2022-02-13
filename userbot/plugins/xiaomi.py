@@ -5,7 +5,7 @@ from telethon import events
 from telethon.errors import YouBlockedUserError
 
 from userbot import catub
-
+from ..core.events import NewMessage
 from ..core.managers import edit_or_reply
 
 plugin_category = "extra"
@@ -29,7 +29,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{firmware} {link}")
             respond = await response
@@ -59,7 +59,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{vendor} {link}")
             respond = await response
@@ -89,7 +89,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{specs} {link}")
             respond = await response
@@ -119,7 +119,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{fboot} {link}")
             respond = await response
@@ -149,7 +149,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{recovery} {link}")
             respond = await response
@@ -179,7 +179,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{pitch} {link}")
             respond = await response
@@ -209,7 +209,7 @@ async def _(event):
     async with event.client.conversation("@XiaomiGeeksBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                NewMessage(incoming=True, from_users=774181428)
             )
             await conv.send_message(f"/{ofox} {link}")
             respond = await response

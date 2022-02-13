@@ -7,7 +7,7 @@ import random
 import re
 import string
 import urllib.request
-
+from ..core.events import NewMessage
 import cloudscraper
 import emoji as catemoji
 from bs4 import BeautifulSoup as bs
@@ -768,19 +768,19 @@ async def pic2packcmd(event):
         i = 0
         try:
             await event.client.send_message(chat, "/cancel")
-            await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+            await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             await event.client.send_message(chat, "/newpack")
-            await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+            await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             await event.client.send_message(chat, args)
-            await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+            await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             for im in images:
                 img = io.BytesIO(im)
                 img.name = name + ".png"
                 img.seek(0)
                 await event.client.send_file(chat, img, force_document=True)
-                await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+                await conv.wait_event(NewMessage(incoming=True, from_users=chat))
                 await event.client.send_message(chat, emoji)
-                await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+                await conv.wait_event(NewMessage(incoming=True, from_users=chat))
                 await event.client.send_read_acknowledge(conv.chat_id)
                 await asyncio.sleep(1)
                 i += 1
@@ -788,12 +788,12 @@ async def pic2packcmd(event):
                     f"__Making the pack.\nProgress: {i}/{len(images)}__"
                 )
             await event.client.send_message(chat, "/publish")
-            await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+            await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             await event.client.send_file(chat, new_img, force_document=True)
-            await conv.wait_event(events.NewMessage(incoming=True, from_users=chat))
+            await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             await event.client.send_message(chat, name)
             ending = await conv.wait_event(
-                events.NewMessage(incoming=True, from_users=chat)
+                NewMessage(incoming=True, from_users=chat)
             )
             await event.client.send_read_acknowledge(conv.chat_id)
             for packname in ending.raw_text.split():

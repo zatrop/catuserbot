@@ -3,7 +3,7 @@ from telethon import events
 from telethon.errors import YouBlockedUserError
 
 from userbot import catub
-
+from ..core.events import NewMessage
 from ..core.managers import edit_or_reply
 
 plugin_category = "utils"
@@ -32,7 +32,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=461083923)
+                NewMessage(incoming=True, from_users=461083923)
             )
             await event.client.forward_messages(chat, reply_message)
             response = await response
@@ -41,7 +41,7 @@ async def _(event):
             return
         if response.text.startswith("See next message."):
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=461083923)
+                NewMessage(incoming=True, from_users=461083923)
             )
             response = await response
             msg = response.message.message

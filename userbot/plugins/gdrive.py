@@ -975,7 +975,7 @@ async def generate_credentials(gdrive):
         url_msg = await conv.send_message(
             "Please go to this URL:\n" f"{auth_url}\nauthorize then reply the code"
         )
-        r = conv.wait_event(events.NewMessage(outgoing=True, chats=BOTLOG_CHATID))
+        r = conv.wait_event(NewMessage(outgoing=True, chats=BOTLOG_CHATID))
         r = await r
         code = r.message.message.strip()
         flow.fetch_token(code=code)

@@ -2,7 +2,7 @@ from telethon import events
 from telethon.errors import YouBlockedUserError
 
 from userbot import catub
-
+from ..core.events import NewMessage
 from ..core.managers import edit_or_reply
 
 plugin_category = "utils"
@@ -30,7 +30,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=272572121)
+                NewMessage(incoming=True, from_users=272572121)
             )
             await event.client.forward_messages(chat, reply_message)
             response = await response

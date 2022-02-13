@@ -223,8 +223,8 @@ class CatUserBotClient(TelegramClient):
                 except BaseException:
                     LOADED_CMDS.update({file_test: [func]})
                 if edited:
-                    catub.add_event_handler(func, events.MessageEdited(**kwargs))
-                catub.add_event_handler(func, events.NewMessage(**kwargs))
+                    catub.add_event_handler(func, MessageEdited(**kwargs))
+                catub.add_event_handler(func, NewMessage(**kwargs))
             return wrapper
 
         return decorator
@@ -277,9 +277,9 @@ class CatUserBotClient(TelegramClient):
             from .session import catub
 
             if edited is True:
-                catub.tgbot.add_event_handler(func, events.MessageEdited(**kwargs))
+                catub.tgbot.add_event_handler(func, MessageEdited(**kwargs))
             else:
-                catub.tgbot.add_event_handler(func, events.NewMessage(**kwargs))
+                catub.tgbot.add_event_handler(func, NewMessage(**kwargs))
 
             return wrapper
 

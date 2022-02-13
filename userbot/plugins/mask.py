@@ -5,7 +5,7 @@ import os
 from telegraph import exceptions, upload_file
 from telethon import events
 from telethon.errors import YouBlockedUserError
-
+from ..core.events import NewMessage
 from userbot import catub
 
 from ..Config import Config
@@ -35,7 +35,7 @@ async def _(catbot):
     async with catbot.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=905164246)
+                NewMessage(incoming=True, from_users=905164246)
             )
             await catbot.client.send_message(chat, reply_message)
             response = await response

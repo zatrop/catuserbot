@@ -9,7 +9,7 @@ import os
 import re
 import textwrap
 from textwrap import wrap
-
+from ..core.events import NewMessage
 import requests
 from PIL import Image, ImageDraw, ImageFont
 from telethon import events
@@ -254,7 +254,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=1031952739)
+                NewMessage(incoming=True, from_users=1031952739)
             )
             if messages_id != []:
                 await event.client.forward_messages(chat, messages_id, event.chat_id)
