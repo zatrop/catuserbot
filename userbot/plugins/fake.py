@@ -2,8 +2,8 @@ import asyncio
 from random import choice, randint
 
 from telethon.errors import BadRequestError
-from telethon.tl.functions.channels import EditAdminRequest
-from telethon.tl.types import ChatAdminRights
+from telethon._tl.fn.channels import EditAdminRequest
+from telethon._tl import ChatAdminRights
 
 from userbot import catub
 

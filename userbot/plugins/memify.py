@@ -8,7 +8,7 @@ import random
 import string
 
 from PIL import Image, ImageFilter
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 
 from userbot import catub
 
@@ -34,7 +34,7 @@ plugin_category = "fun"
 def random_color():
     number_of_colors = 2
     return [
-        "#" + "".join(random.choice("0123456789ABCDEF") for j in range(6))
+        "#" + "".join(random.choice("0123456789ABCDEF") for _ in range(6))
         for i in range(number_of_colors)
     ]
 

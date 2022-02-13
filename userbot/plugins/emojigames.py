@@ -1,5 +1,5 @@
 # imported from uniborg credit goes to spechide
-from telethon.tl.types import InputMediaDice
+from telethon._tl import InputMediaDice
 
 from . import catub
 

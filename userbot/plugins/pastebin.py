@@ -218,9 +218,7 @@ async def get_dogbin_content(event):
     if not url:
         return await edit_delete(event, "__I can't find any pastebin link.__")
     catevent = await edit_or_reply(event, "`Getting Contents of pastebin.....`")
-    rawurl = None
-    if "raw" in url:
-        rawurl = url
+    rawurl = url if "raw" in url else None
     if rawurl is None:
         fid = os.path.splitext((os.path.basename(url)))
         if "pasty" in url:
@@ -238,16 +236,16 @@ async def get_dogbin_content(event):
         resp.raise_for_status()
     except requests.exceptions.HTTPError as HTTPErr:
         return await catevent.edit(
-            f"**Request returned an unsuccessful status code.**\n\n__{str(HTTPErr)}__"
+            f'**Request returned an unsuccessful status code.**\n\n__{HTTPErr}__'
         )
+
     except requests.exceptions.Timeout as TimeoutErr:
-        return await catevent.edit(f"**Request timed out.**__{str(TimeoutErr)}__")
+        return await catevent.edit(f'**Request timed out.**__{TimeoutErr}__')
     except requests.exceptions.TooManyRedirects as RedirectsErr:
         return await catevent.edit(
-            (
-                f"**Request exceeded the configured number of maximum redirections.**__{str(RedirectsErr)}__"
-            )
+            f'**Request exceeded the configured number of maximum redirections.**__{RedirectsErr}__'
         )
+
     reply_text = f"**Fetched dogbin URL content successfully!**\n\n**Content:** \n```{resp.text}```"
     await edit_or_reply(catevent, reply_text)
 
@@ -306,8 +304,7 @@ async def _(event):
         result = ""
         if response:
             await event.client.send_read_acknowledge(conv.chat_id)
-            urls = extractor.find_urls(response.text)
-            if urls:
+            if urls := extractor.find_urls(response.text):
                 result = f"The instant preview is [here]({urls[0]})"
         if result == "":
             result = "I can't make it as instant view"

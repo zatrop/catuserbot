@@ -1,8 +1,8 @@
 # Credits of Plugin @ViperAdnan and @mrconfused(revert)[will add sql soon]
 import html
 
-from telethon.tl import functions
-from telethon.tl.functions.users import GetFullUserRequest
+from telethon._tl import fn
+from telethon._tl.fn.users import GetFullUserRequest
 
 from ..Config import Config
 from . import (
@@ -53,14 +53,14 @@ async def _(event):
     user_bio = replied_user.about
     if user_bio is not None:
         user_bio = replied_user.about
-    await event.client(functions.account.UpdateProfileRequest(first_name=first_name))
-    await event.client(functions.account.UpdateProfileRequest(last_name=last_name))
-    await event.client(functions.account.UpdateProfileRequest(about=user_bio))
+    await event.client(fn.account.UpdateProfileRequest(first_name=first_name))
+    await event.client(fn.account.UpdateProfileRequest(last_name=last_name))
+    await event.client(fn.account.UpdateProfileRequest(about=user_bio))
     try:
         pfile = await event.client.upload_file(profile_pic)
     except Exception as e:
         return await edit_delete(event, f"**Failed to clone due to error:**\n__{e}__")
-    await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
+    await event.client(fn.photos.UploadProfilePhotoRequest(pfile))
     await edit_delete(event, "**LET US BE AS ONE**")
     if BOTLOG:
         await event.client.send_message(
@@ -84,13 +84,13 @@ async def _(event):
     blank = ""
     bio = f"{DEFAULTUSERBIO}"
     await event.client(
-        functions.photos.DeletePhotosRequest(
+        fn.photos.DeletePhotosRequest(
             await event.client.get_profile_photos("me", limit=1)
         )
     )
-    await event.client(functions.account.UpdateProfileRequest(about=bio))
-    await event.client(functions.account.UpdateProfileRequest(first_name=name))
-    await event.client(functions.account.UpdateProfileRequest(last_name=blank))
+    await event.client(fn.account.UpdateProfileRequest(about=bio))
+    await event.client(fn.account.UpdateProfileRequest(first_name=name))
+    await event.client(fn.account.UpdateProfileRequest(last_name=blank))
     await edit_delete(event, "successfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(

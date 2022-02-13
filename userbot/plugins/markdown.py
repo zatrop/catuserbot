@@ -6,10 +6,10 @@ from functools import partial
 from random import choice
 
 from telethon import events
-from telethon.extensions.markdown import DEFAULT_URL_RE
-from telethon.tl import types
-from telethon.tl.functions.messages import EditMessageRequest
-from telethon.tl.types import (
+from telethon._misc.markdown import DEFAULT_URL_RE
+from telethon import _tl as types
+from telethon._tl.fn.messages import EditMessageRequest
+from telethon._tl import (
     MessageEntityBold,
     MessageEntityCode,
     MessageEntityItalic,
@@ -136,9 +136,7 @@ def parse(message, old_entities=None):
 
             text, entity = parser(match)
 
-            # Shift old entities after our current position (so they stay in place)
-            shift = len(text) - len(match[0])
-            if shift:
+            if shift := len(text) - len(match[0]):
                 for e in old_entities[after:]:
                     e.offset += shift
 

@@ -8,8 +8,8 @@ import re
 
 import requests
 from cowpy import cow
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChannelParticipantsAdmins, MessageEntityMentionName
+from telethon._tl.fn.users import GetFullUserRequest
+from telethon._tl import ChannelParticipantsAdmins, MessageEntityMentionName
 
 from userbot import catub
 
@@ -245,8 +245,11 @@ async def shout(args):
     for messagestr in words:
         text = " ".join(messagestr)
         result = [" ".join(text)]
-        for pos, symbol in enumerate(text[1:]):
-            result.append(symbol + " " + "  " * pos + symbol)
+        result.extend(
+            f'{symbol} ' + "  " * pos + symbol
+            for pos, symbol in enumerate(text[1:])
+        )
+
         result = list("\n".join(result))
         result[0] = text[0]
         result = "".join(result)
@@ -332,7 +335,7 @@ async def smrk(smk):
         await edit_or_reply(smk, "ツ")
         return
     if message == "dele":
-        await edit_or_reply(smk, message + "te the hell" + "ツ")
+        await edit_or_reply(smk, f'{message}te the hellツ')
     else:
         smirk = " ツ"
         reply_text = message + smirk
@@ -416,8 +419,7 @@ async def _(event):
             event, "`either reply to text message or give input to search`", 5
         )
     sample_url = f"https://da.gd/s?url=https://lmgtfy.com/?q={input_str.replace(' ', '+')}%26iie=1"
-    response_api = requests.get(sample_url).text
-    if response_api:
+    if response_api := requests.get(sample_url).text:
         await edit_or_reply(
             event, f"[{input_str}]({response_api.rstrip()})\n`Thank me Later 🙃` "
         )
@@ -478,7 +480,7 @@ async def gbun(event):
                 jnl += "**Victim Nigga's username** : @{}\n".format(usname)
             if len(gbunVar) > 0:
                 gbunm = "`{}`".format(gbunVar)
-                gbunr = "**Reason: **" + gbunm
+                gbunr = f'**Reason: **{gbunm}'
                 jnl += gbunr
             else:
                 no_reason = "__Reason: Potential spammer. __"

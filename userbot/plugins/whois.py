@@ -4,8 +4,8 @@ import html
 import os
 
 from requests import get
-from telethon.tl.functions.photos import GetUserPhotosRequest
-from telethon.tl.functions.users import GetFullUserRequest
+from telethon._tl.fn.photos import GetUserPhotosRequest
+from telethon._tl.fn.users import GetFullUserRequest
 from telethon.utils import get_input_location
 
 from userbot import catub
@@ -106,11 +106,10 @@ async def _(event):
     except Exception:
         dc_id = "Couldn't fetch DC ID!"
     if spamwatch:
-        ban = spamwatch.get_ban(user_id)
-        if ban:
+        if ban := spamwatch.get_ban(user_id):
             sw = f"**Spamwatch Banned :** `True` \n       **-**🤷‍♂️**Reason : **`{ban.reason}`"
         else:
-            sw = f"**Spamwatch Banned :** `False`"
+            sw = '**Spamwatch Banned :** `False`'
     else:
         sw = "**Spamwatch Banned :**`Not Connected`"
     try:

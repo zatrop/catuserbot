@@ -4,8 +4,8 @@ made by @mrconfused
 """
 from telethon.errors import BadRequestError
 from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidError
-from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.types import ChatBannedRights
+from telethon._tl.fn.channels import EditBannedRequest
+from telethon._tl import ChatBannedRights
 from telethon.utils import get_display_name
 
 from userbot import catub

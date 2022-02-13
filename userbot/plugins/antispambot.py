@@ -5,7 +5,7 @@
 from requests import get
 from telethon.errors import ChatAdminRequiredError
 from telethon.events import ChatAction
-from telethon.tl.types import ChannelParticipantsAdmins
+from telethon._tl import ChannelParticipantsAdmins
 from telethon.utils import get_display_name
 
 from ..Config import Config
@@ -59,8 +59,7 @@ if Config.ANTISPAMBOT_BAN:
             except Exception as e:
                 LOGS.info(e)
         if spamwatch and not catbanned:
-            ban = spamwatch.get_ban(user.id)
-            if ban:
+            if ban := spamwatch.get_ban(user.id):
                 hmm = await event.reply(
                     f"[{user.first_name}](tg://user?id={user.id}) was banned by spamwatch for the reason `{ban.reason}`"
                 )

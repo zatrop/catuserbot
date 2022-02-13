@@ -3,7 +3,7 @@ import re
 from asyncio import sleep
 
 from telethon.errors import rpcbaseerrors
-from telethon.tl.types import (
+from telethon._tl import (
     InputMessagesFilterDocument,
     InputMessagesFilterEmpty,
     InputMessagesFilterGeo,
@@ -236,7 +236,7 @@ async def purgeme(event):
         ],
     },
 )
-async def fastpurger(event):  # sourcery no-metrics
+async def fastpurger(event):    # sourcery no-metrics
     "To purge messages from the replied message"
     chat = await event.get_input_chat()
     msgs = []
@@ -442,7 +442,7 @@ async def fastpurger(event):  # sourcery no-metrics
         result += "__Fast purge complete!\nPurged __`" + str(count) + "` __messages.__"
     if error != "":
         result += f"\n\n**Error:**{error}"
-    if result == "":
+    if not result:
         result += "__There are no messages to purge.__"
     hi = await event.client.send_message(event.chat_id, result)
     if BOTLOG:

@@ -37,15 +37,14 @@ plugin_category = "fun"
         ],
     },
 )
-async def imirror(event):  # sourcery no-metrics
+async def imirror(event):    # sourcery no-metrics
     "imgae refelection fun."
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Photo", "Sticker"]:
         return await edit_delete(event, "__Reply to photo or sticker to make mirror.__")
     catevent = await event.edit("__Reflecting the image....__")
-    args = event.pattern_match.group(1)
-    if args:
+    if args := event.pattern_match.group(1):
         filename = "catuserbot.webp"
         f_format = "webp"
     else:
@@ -271,8 +270,7 @@ async def pic_gifcmd(event):
             event,
             "__Reply to photo or sticker to make it doted image. Animated sticker is not supported__",
         )
-    args = event.pattern_match.group(1)
-    if args:
+    if args := event.pattern_match.group(1):
         if args.isdigit():
             pix = int(args) if int(args) > 0 else 100
     else:

@@ -2,7 +2,7 @@ import time
 from datetime import datetime
 
 from emoji import get_emoji_regexp
-from telethon.tl.types import Channel, PollAnswer
+from telethon._tl import Channel, PollAnswer
 
 
 async def get_message_link(channelid, msgid):

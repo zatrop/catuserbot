@@ -163,7 +163,7 @@ async def get_file_id(input_str):
         return link, "unknown"
 
 
-async def download(event, gdrive, service, uri=None):  # sourcery no-metrics
+async def download(event, gdrive, service, uri=None):    # sourcery no-metrics
     """Download files to local then upload"""
     start = datetime.now()
     reply = ""
@@ -274,7 +274,7 @@ async def download(event, gdrive, service, uri=None):  # sourcery no-metrics
             status = status.replace("[FILE", "[FOLDER")
             folder = await create_dir(service, file_name, GDRIVE_.parent_Id)
             dir_id = folder.get("id")
-            webViewURL = "https://drive.google.com/drive/folders/" + dir_id
+            webViewURL = f'https://drive.google.com/drive/folders/{dir_id}'
             try:
                 await task_directory(gdrive, service, required_file_name, dir_id)
             except CancelProcess:

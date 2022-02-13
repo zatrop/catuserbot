@@ -6,13 +6,13 @@ from telethon.errors import (
     PhotoCropSizeSmallError,
 )
 from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidError
-from telethon.tl.functions.channels import (
+from telethon._tl.fn.channels import (
     EditAdminRequest,
     EditBannedRequest,
     EditPhotoRequest,
 )
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import (
+from telethon._tl.fn.users import GetFullUserRequest
+from telethon._tl import (
     ChatAdminRights,
     ChatBannedRights,
     InputChatPhotoEmpty,
@@ -525,7 +525,7 @@ async def endmute(event):
     try:
         await event.client.kick_participant(event.chat_id, user.id)
     except Exception as e:
-        return await catevent.edit(NO_PERM + f"\n{e}")
+        return await catevent.edit(f'{NO_PERM}\n{e}')
     if reason:
         await catevent.edit(
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"

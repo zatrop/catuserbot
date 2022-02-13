@@ -2,9 +2,9 @@ import asyncio
 from datetime import datetime
 
 from telethon.errors import BadRequestError
-from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChatBannedRights
+from telethon._tl.fn.channels import EditBannedRequest
+from telethon._tl.fn.users import GetFullUserRequest
+from telethon._tl import ChatBannedRights
 from telethon.utils import get_display_name
 
 from userbot import catub

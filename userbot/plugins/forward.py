@@ -1,6 +1,6 @@
 import string
 
-from telethon.tl.types import Channel, MessageMediaWebPage
+from telethon._tl import Channel, MessageMediaWebPage
 
 from userbot import catub
 from userbot.core.logger import logging

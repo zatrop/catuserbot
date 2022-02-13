@@ -1,4 +1,4 @@
-from telethon.tl import functions
+from telethon._tl import fn
 
 from .. import catub
 from ..Config import Config
@@ -34,7 +34,7 @@ async def _(event):
     if type_of_group == "g":
         try:
             result = await event.client(
-                functions.messages.CreateChatRequest(
+                fn.messages.CreateChatRequest(
                     users=[Config.TG_BOT_USERNAME],
                     # Not enough users (to create a chat, for example)
                     # Telegram, no longer allows creating a chat with ourselves
@@ -43,7 +43,7 @@ async def _(event):
             )
             created_chat_id = result.chats[0].id
             result = await event.client(
-                functions.messages.ExportChatInviteRequest(
+                fn.messages.ExportChatInviteRequest(
                     peer=created_chat_id,
                 )
             )
@@ -55,7 +55,7 @@ async def _(event):
     elif type_of_group == "c":
         try:
             r = await event.client(
-                functions.channels.CreateChannelRequest(
+                fn.channels.CreateChannelRequest(
                     title=group_name,
                     about=descript,
                     megagroup=False,
@@ -63,7 +63,7 @@ async def _(event):
             )
             created_chat_id = r.chats[0].id
             result = await event.client(
-                functions.messages.ExportChatInviteRequest(
+                fn.messages.ExportChatInviteRequest(
                     peer=created_chat_id,
                 )
             )

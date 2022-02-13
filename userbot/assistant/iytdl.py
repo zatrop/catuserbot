@@ -12,7 +12,7 @@ from pathlib import Path
 from time import time
 
 import ujson
-from telethon import Button, types
+from telethon import Button, _tl as types
 from telethon.errors import BotResponseTimeoutError
 from telethon.events import CallbackQuery
 from telethon.utils import get_attributes

@@ -3,7 +3,7 @@ from collections import defaultdict, deque
 
 import regex
 from telethon import events
-from telethon.tl import functions, types
+from telethon import _tl as types
 
 from userbot import catub
 
@@ -67,9 +67,9 @@ def doit(chat_id, match, original):
 
 async def group_has_sedbot(group):
     if isinstance(group, types.InputPeerChannel):
-        full = await catub(functions.channels.GetFullChannelRequest(group))
+        full = await catub(types.fn.channels.GetFullChannelRequest(group))
     elif isinstance(group, types.InputPeerChat):
-        full = await catub(functions.messages.GetFullChatRequest(group.chat_id))
+        full = await catub(types.fn.messages.GetFullChatRequest(group.chat_id))
     else:
         return False
 

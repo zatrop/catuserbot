@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from telethon.tl.types import InputMessagesFilterDocument
+from telethon._tl import InputMessagesFilterDocument
 
 from ..Config import Config
 from ..helpers.utils import install_pip

@@ -19,21 +19,21 @@ from typing import (
 )
 
 from telethon import TelegramClient, helpers, utils
-from telethon.crypto import AuthKey
+from telethon._crypto import AuthKey
 from telethon.errors import FloodWaitError
 from telethon.network import MTProtoSender
-from telethon.tl.alltlobjects import LAYER
-from telethon.tl.functions import InvokeWithLayerRequest
-from telethon.tl.functions.auth import (
+from telethon._tl.alltlobjects import LAYER
+from telethon._tl.fn import InvokeWithLayerRequest
+from telethon._tl.fn.auth import (
     ExportAuthorizationRequest,
     ImportAuthorizationRequest,
 )
-from telethon.tl.functions.upload import (
+from telethon._tl.fn.upload import (
     GetFileRequest,
     SaveBigFilePartRequest,
     SaveFilePartRequest,
 )
-from telethon.tl.types import (
+from telethon._tl import (
     Document,
     InputDocumentFileLocation,
     InputFile,

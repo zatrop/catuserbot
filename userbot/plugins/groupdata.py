@@ -7,9 +7,9 @@ from telethon.errors import (
     ChannelPrivateError,
     ChannelPublicGroupNaError,
 )
-from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
-from telethon.tl.functions.messages import GetFullChatRequest, GetHistoryRequest
-from telethon.tl.types import (
+from telethon._tl.fn.channels import GetFullChannelRequest, GetParticipantsRequest
+from telethon._tl.fn.messages import GetFullChatRequest, GetHistoryRequest
+from telethon._tl import (
     ChannelParticipantAdmin,
     ChannelParticipantCreator,
     ChannelParticipantsAdmins,
@@ -99,15 +99,14 @@ async def _(event):
 async def _(event):
     "To get list of bots."
     mentions = "**Bots in this Group**: \n"
-    input_str = event.pattern_match.group(1)
-    if not input_str:
-        chat = await event.get_input_chat()
-    else:
+    if input_str := event.pattern_match.group(1):
         mentions = "Bots in {} Group: \n".format(input_str)
         try:
             chat = await event.client.get_entity(input_str)
         except Exception as e:
             return await edit_or_reply(event, str(e))
+    else:
+        chat = await event.get_input_chat()
     try:
         async for x in event.client.iter_participants(
             chat, filter=ChannelParticipantsBots
@@ -142,8 +141,7 @@ async def get_users(show):
     "To get list of Users."
     mentions = "**Users in this Group**: \n"
     await reply_id(show)
-    input_str = show.pattern_match.group(1)
-    if input_str:
+    if input_str := show.pattern_match.group(1):
         mentions = "Users in {} Group: \n".format(input_str)
         try:
             chat = await show.client.get_entity(input_str)

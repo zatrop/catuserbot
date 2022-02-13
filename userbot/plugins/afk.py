@@ -1,7 +1,7 @@
 import asyncio
 from datetime import datetime
 
-from telethon.tl import functions, types
+from telethon import _tl as types
 
 from userbot import catub
 
@@ -201,7 +201,7 @@ async def _(event):
             AFK_.reason = input_str
             AFK_.msg_link = False
         last_seen_status = await event.client(
-            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
+            types.functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             AFK_.afk_time = datetime.now()
@@ -265,7 +265,7 @@ async def _(event):
         input_str = event.pattern_match.group(1)
         AFK_.reason = input_str
         last_seen_status = await event.client(
-            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
+            types.functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             AFK_.afk_time = datetime.now()

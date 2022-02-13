@@ -8,7 +8,7 @@ from datetime import datetime
 from time import time
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl import types
+from telethon import _tl as types
 from telethon.utils import get_attributes
 from wget import download
 from youtube_dl import YoutubeDL
@@ -127,16 +127,14 @@ async def fix_attributes(
     if video and isinstance(video, types.DocumentAttributeVideo):
         new_attributes.append(video)
 
-    for attr in attributes:
-        if (
+    new_attributes.extend(attr for attr in attributes if (
             isinstance(attr, types.DocumentAttributeAudio)
             and not audio
             or not isinstance(attr, types.DocumentAttributeAudio)
             and not video
             or not isinstance(attr, types.DocumentAttributeAudio)
             and not isinstance(attr, types.DocumentAttributeVideo)
-        ):
-            new_attributes.append(attr)
+        ))
     return new_attributes, mime_type
 
 

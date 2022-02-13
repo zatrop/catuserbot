@@ -146,8 +146,7 @@ async def on_snip_delete(event):
     "To delete paticular note in bot."
     name = event.pattern_match.group(1)
     name = name.lower()
-    catsnip = get_note(name)
-    if catsnip:
+    if catsnip := get_note(name):
         rm_note(name)
     else:
         return await edit_or_reply(

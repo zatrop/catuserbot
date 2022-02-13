@@ -1,4 +1,4 @@
-from telethon.tl.types import ChannelParticipantsAdmins
+from telethon._tl import ChannelParticipantsAdmins
 
 from userbot import catub
 

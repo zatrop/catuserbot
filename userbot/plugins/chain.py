@@ -1,4 +1,4 @@
-from telethon.tl.functions.messages import SaveDraftRequest
+from telethon._tl.fn.messages import SaveDraftRequest
 
 from . import catub
 

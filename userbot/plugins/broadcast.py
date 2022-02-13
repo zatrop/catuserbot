@@ -1,7 +1,7 @@
 import base64
 from asyncio import sleep
 
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
 
 from .. import catub
@@ -78,8 +78,7 @@ async def catbroadcast_add(event):
             parse_mode=_format.parse_pre,
         )
     keyword = catinput_str.lower()
-    check = sql.is_in_broadcastlist(keyword, event.chat_id)
-    if check:
+    if check := sql.is_in_broadcastlist(keyword, event.chat_id):
         return await edit_delete(
             event,
             f"This chat is already in this category {keyword}",

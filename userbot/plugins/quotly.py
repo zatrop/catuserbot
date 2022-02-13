@@ -97,7 +97,7 @@ async def q_pic(event):  # sourcery no-metrics
                 ).content
             )
     text = "\n".join(textwrap.wrap(text, 25))
-    text = "“" + text + "„"
+    text = f'“{text}„'
     font = ImageFont.truetype(FONT_FILE_TO_USE, 50)
     img = Image.open(pfp)
     if black:

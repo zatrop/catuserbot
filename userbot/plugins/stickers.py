@@ -14,10 +14,10 @@ from bs4 import BeautifulSoup as bs
 from PIL import Image
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl import functions, types
-from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from telethon.tl.types import (
+from telethon import _tl
+from telethon._tl.fn.messages import GetStickerSetRequest
+from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+from telethon._tl import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
     InputStickerSetID,
@@ -510,8 +510,8 @@ async def pack_kang(event):  # sourcery no-metrics
         )
     kangst = 1
     reqd_sticker_set = await event.client(
-        functions.messages.GetStickerSetRequest(
-            stickerset=types.InputStickerSetShortName(
+        _tl.fn.messages.GetStickerSetRequest(
+            stickerset=_tl.InputStickerSetShortName(
                 short_name=f"{get_stickerset.set.short_name}"
             )
         )

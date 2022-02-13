@@ -7,7 +7,7 @@ import time
 from datetime import datetime
 
 from pySmartDL import SmartDL
-from telethon.tl import types
+from telethon import _tl as types
 from telethon.utils import get_extension
 
 from userbot import catub
@@ -42,7 +42,7 @@ async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
         ],
     },
 )
-async def _(event):  # sourcery no-metrics
+async def _(event):    # sourcery no-metrics
     "To download the replied telegram file"
     mone = await edit_or_reply(event, "`Downloading....`")
     input_str = event.pattern_match.group(3)
@@ -142,10 +142,11 @@ async def _(event):  # sourcery no-metrics
             percentage = downloader.get_progress() * 100
             dspeed = downloader.get_speed()
             progress_str = "`{0}{1} {2}`%".format(
-                "".join("▰" for i in range(math.floor(percentage / 5))),
-                "".join("▱" for i in range(20 - math.floor(percentage / 5))),
+                "".join("▰" for _ in range(math.floor(percentage / 5))),
+                "".join("▱" for _ in range(20 - math.floor(percentage / 5))),
                 round(percentage, 2),
             )
+
             estimated_total_time = downloader.get_eta(human=True)
             current_message = f"Downloading the file\
                                 \n\n**URL : **`{url}`\
