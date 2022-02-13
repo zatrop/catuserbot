@@ -1,7 +1,7 @@
 import random
 
 from telethon.errors.rpcbaseerrors import ForbiddenError
-from telethon.errors.rpcerrorlist import PollOptionInvalidError
+from telethon.errors import PollOptionInvalidError
 from telethon._tl import InputMediaPoll, Poll
 
 from userbot import catub

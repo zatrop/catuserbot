@@ -5,7 +5,7 @@ from datetime import datetime
 from platform import python_version
 
 from telethon import version
-from telethon.errors.rpcerrorlist import (
+from telethon.errors import (
     MediaEmptyError,
     WebpageCurlFailedError,
     WebpageMediaEmptyError,

@@ -2,7 +2,7 @@
 import os
 import shutil
 
-from telethon.errors.rpcerrorlist import MediaEmptyError
+from telethon.errors import MediaEmptyError
 
 from userbot import catub
 

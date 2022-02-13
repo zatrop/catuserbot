@@ -11,7 +11,7 @@ import requests
 from barcode.writer import ImageWriter
 from bs4 import BeautifulSoup
 from PIL import Image, ImageColor
-from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.errors import YouBlockedUserError
 
 from userbot import catub
 

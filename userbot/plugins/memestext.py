@@ -206,5 +206,5 @@ async def bluetext(e):
 )
 async def _(event):
     "telethon session error code(fun)."
-    mentions = "**telethon.errors.rpcerrorlist.AuthKeyDuplicatedError: The authorization key (session file) was used under two different IP addresses simultaneously, and can no longer be used. Use the same session exclusively, or use different sessions (caused by GetMessagesRequest)**"
+    mentions = "**telethon.errors.AuthKeyDuplicatedError: The authorization key (session file) was used under two different IP addresses simultaneously, and can no longer be used. Use the same session exclusively, or use different sessions (caused by GetMessagesRequest)**"
     await edit_or_reply(event, mentions)

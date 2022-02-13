@@ -7,7 +7,7 @@ import re
 from datetime import datetime
 from time import time
 
-from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.errors import YouBlockedUserError
 from telethon import _tl as types
 from telethon._misc.utils import get_attributes
 from wget import download

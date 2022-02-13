@@ -1,5 +1,5 @@
 from telethon import events
-from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.errors import YouBlockedUserError
 
 from userbot import catub
 
