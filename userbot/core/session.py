@@ -23,7 +23,7 @@ try:
 #         connection=ConnectionTcpAbridged,
         auto_reconnect=True,
         connection_retries=None,
-    )
+    ).start()
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
