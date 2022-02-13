@@ -35,7 +35,7 @@ async def setup_bot():
         await catub.connect()
         config = await catub(functions.help.GetConfig())
         for option in config.dc_options:
-            if option.ip_address == catub.session.server_address:
+            if option.ip_address == catub._session.server_address:
                 if catub.session.dc_id != option.id:
                     LOGS.warning(
                         f"Fixed DC ID in session from {catub.session.dc_id}"
