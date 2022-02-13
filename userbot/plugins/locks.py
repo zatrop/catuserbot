@@ -4,9 +4,9 @@ from telethon import events
 
 from telethon import _tl as types 
 from telethon._tl import fn as functions
-from telethon._tl.fn.channels import EditBannedRequest
-from telethon._tl.fn.messages import EditChatDefaultBannedRightsRequest
-# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.channels import EditBanned
+from telethon._tl.fn.messages import EditChatDefaultBannedRights
+from telethon._tl.fn.messages import ImportChatInvite as Get
 from telethon._tl import ChatBannedRights
 from telethon._misc.utils import get_display_name
 
@@ -196,7 +196,7 @@ async def _(event):  # sourcery no-metrics
         )
         try:
             await event.client(
-                EditChatDefaultBannedRightsRequest(
+                EditChatDefaultBannedRights(
                     peer=peer_id, banned_rights=lock_rights
                 )
             )
@@ -384,7 +384,7 @@ async def _(event):  # sourcery no-metrics
         )
         try:
             await event.client(
-                EditChatDefaultBannedRightsRequest(
+                EditChatDefaultBannedRights(
                     peer=peer_id, banned_rights=unlock_rights
                 )
             )
@@ -691,7 +691,7 @@ async def _(event):  # sourcery no-metrics
         change_info=uchangeinfo,
     )
     try:
-        await event.client(EditBannedRequest(peer_id, reply.from_id, lock_rights))
+        await event.client(EditBanned(peer_id, reply.from_id, lock_rights))
         await edit_or_reply(event, f"`Locked {locktype} for this user !!`")
     except BaseException as e:
         await edit_delete(
@@ -940,7 +940,7 @@ async def _(event):  # sourcery no-metrics
         change_info=uchangeinfo,
     )
     try:
-        await event.client(EditBannedRequest(peer_id, reply.from_id, lock_rights))
+        await event.client(EditBanned(peer_id, reply.from_id, lock_rights))
         await edit_or_reply(event, f"`Unlocked {locktype} for this user !!`")
     except BaseException as e:
         await edit_delete(
@@ -1115,7 +1115,7 @@ async def _(event):
                 is_ban_able = True
                 try:
                     await event.client(
-                        functions.channels.EditBannedRequest(
+                        functions.channels.EditBanned(
                             event.chat_id, user_obj, rights
                         )
                     )

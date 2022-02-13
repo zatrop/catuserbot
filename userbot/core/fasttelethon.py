@@ -26,13 +26,13 @@ from telethon._network import MTProtoSender
 from telethon._tl import LAYER
 from telethon._tl.fn import InvokeWithLayer
 from telethon._tl.fn.auth import (
-    ExportAuthorizationRequest,
-    ImportAuthorizationRequest,
+    ExportAuthorization,
+    ImportAuthorization,
 )
 from telethon._tl.fn.upload import (
-    GetFileRequest,
-    SaveBigFilePartRequest,
-    SaveFilePartRequest,
+    GetFile,
+    SaveBigFilePart,
+    SaveFilePart,
 )
 from telethon._tl import (
     Document,
@@ -64,7 +64,7 @@ TypeLocation = Union[
 class DownloadSender:
     client: TelegramClient
     sender: MTProtoSender
-    request: GetFileRequest
+    request: GetFile
     remaining: int
     stride: int
 
@@ -80,7 +80,7 @@ class DownloadSender:
     ) -> None:
         self.sender = sender
         self.client = client
-        self.request = GetFileRequest(file, offset=offset, limit=limit)
+        self.request = GetFile(file, offset=offset, limit=limit)
         self.stride = stride
         self.remaining = count
 
@@ -105,7 +105,7 @@ class DownloadSender:
 class UploadSender:
     client: TelegramClient
     sender: MTProtoSender
-    request: Union[SaveFilePartRequest, SaveBigFilePartRequest]
+    request: Union[SaveFilePart, SaveBigFilePart]
     part_count: int
     stride: int
     previous: Optional[asyncio.Task]
@@ -126,9 +126,9 @@ class UploadSender:
         self.sender = sender
         self.part_count = part_count
         if big:
-            self.request = SaveBigFilePartRequest(file_id, index, part_count, b"")
+            self.request = SaveBigFilePart(file_id, index, part_count, b"")
         else:
-            self.request = SaveFilePartRequest(file_id, index, b"")
+            self.request = SaveFilePart(file_id, index, b"")
         self.stride = stride
         self.previous = None
         self.loop = loop
@@ -272,8 +272,8 @@ class ParallelTransferrer:
         )
         if not self.auth_key:
             log.debug(f"Exporting auth to DC {self.dc_id}")
-            auth = await self.client(ExportAuthorizationRequest(self.dc_id))
-            self.client._init_request.query = ImportAuthorizationRequest(
+            auth = await self.client(ExportAuthorization(self.dc_id))
+            self.client._init_request.query = ImportAuthorization(
                 id=auth.id, bytes=auth.bytes
             )
             req = InvokeWithLayer(LAYER, self.client._init_request)

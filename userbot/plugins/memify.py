@@ -8,7 +8,7 @@ import random
 import string
 
 from PIL import Image, ImageFilter
-# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.messages import ImportChatInvite as Get
 
 from userbot import catub
 

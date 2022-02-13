@@ -2,8 +2,8 @@ import asyncio
 import base64
 
 from telethon import _tl as types
-from telethon._tl.fn.messages import GetStickerSetRequest
-# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.messages import GetStickerSet
+from telethon._tl.fn.messages import ImportChatInvite as Get
 from telethon._misc.utils import get_display_name
 
 from userbot import catub
@@ -169,7 +169,7 @@ async def stickerpack_spam(event):
         return
     try:
         get_stickerset = await event.client(
-            GetStickerSetRequest(
+            GetStickerSet(
                 types.InputStickerSetID(
                     id=stickerset_attr.stickerset.id,
                     access_hash=stickerset_attr.stickerset.access_hash,
@@ -187,7 +187,7 @@ async def stickerpack_spam(event):
     except BaseException:
         pass
     reqd_sticker_set = await event.client(
-        types.fn.messages.GetStickerSetRequest(
+        types.fn.messages.GetStickerSet(
             stickerset=types.InputStickerSetShortName(
                 short_name=f"{get_stickerset.set.short_name}"
             )

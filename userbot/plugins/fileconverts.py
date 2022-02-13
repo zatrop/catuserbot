@@ -14,8 +14,8 @@ from PIL import Image, ImageDraw, ImageFilter, ImageOps
 from pymediainfo import MediaInfo
 from telethon import types
 from telethon.errors import PhotoInvalidDimensionsError
-# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
-from telethon._tl.fn.messages import SendMediaRequest
+from telethon._tl.fn.messages import ImportChatInvite as Get
+from telethon._tl.fn.messages import SendMedia
 from telethon._misc.utils import get_attributes
 
 from userbot import catub
@@ -458,7 +458,7 @@ async def on_file_to_photo(event):
     img.name = "image.png"
     try:
         await event.client(
-            SendMediaRequest(
+            SendMedia(
                 peer=await event.get_input_chat(),
                 media=types.InputMediaUploadedPhoto(img),
                 message=target.message,

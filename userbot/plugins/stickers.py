@@ -15,8 +15,8 @@ from PIL import Image
 from telethon import events
 from telethon.errors import YouBlockedUserError
 from telethon import _tl
-from telethon._tl.fn.messages import GetStickerSetRequest
-# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.messages import GetStickerSet
+from telethon._tl.fn.messages import ImportChatInvite as Get
 from telethon._tl import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
@@ -496,7 +496,7 @@ async def pack_kang(event):  # sourcery no-metrics
         )
     try:
         get_stickerset = await event.client(
-            GetStickerSetRequest(
+            GetStickerSet(
                 InputStickerSetID(
                     id=stickerset_attr.stickerset.id,
                     access_hash=stickerset_attr.stickerset.access_hash,
@@ -510,7 +510,7 @@ async def pack_kang(event):  # sourcery no-metrics
         )
     kangst = 1
     reqd_sticker_set = await event.client(
-        _tl.fn.messages.GetStickerSetRequest(
+        _tl.fn.messages.GetStickerSet(
             stickerset=_tl.InputStickerSetShortName(
                 short_name=f"{get_stickerset.set.short_name}"
             )
@@ -759,7 +759,7 @@ async def pic2packcmd(event):
     img.paste(image, ((www - w) // 2, 0))
     newimg = img.resize((100, 100))
     new_img = io.BytesIO()
-    new_img.name = name + ".png"
+    new_img.name = f'{name}.png'
     images = await crop_and_divide(img)
     newimg.save(new_img)
     new_img.seek(0)
@@ -775,7 +775,7 @@ async def pic2packcmd(event):
             await conv.wait_event(NewMessage(incoming=True, from_users=chat))
             for im in images:
                 img = io.BytesIO(im)
-                img.name = name + ".png"
+                img.name =  f"{name}.png"
                 img.seek(0)
                 await event.client.send_file(chat, img, force_document=True)
                 await conv.wait_event(NewMessage(incoming=True, from_users=chat))
@@ -842,7 +842,7 @@ async def get_pack_info(event):
     if not isinstance(stickerset_attr, DocumentAttributeSticker):
         return await catevent.edit("`This is not a sticker. Reply to a sticker.`")
     get_stickerset = await event.client(
-        GetStickerSetRequest(
+        GetStickerSet(
             InputStickerSetID(
                 id=stickerset_attr.stickerset.id,
                 access_hash=stickerset_attr.stickerset.access_hash,

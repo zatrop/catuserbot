@@ -2,7 +2,7 @@ import base64
 import time
 
 from telethon._tl.custom import Dialog
-# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+from telethon._tl.fn.messages import ImportChatInvite as Get
 from telethon._tl import Channel, Chat, User
 
 from userbot import catub
