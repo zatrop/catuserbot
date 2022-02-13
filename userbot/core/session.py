@@ -30,7 +30,7 @@ except Exception as e:
 
 
 catub.tgbot = tgbot = CatUserBotClient(
-    session="CatTgbot",
+    session="TgCatUB",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
     # loop=loop,
