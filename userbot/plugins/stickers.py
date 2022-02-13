@@ -16,7 +16,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon import _tl
 from telethon._tl.fn.messages import GetStickerSetRequest
-from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 from telethon._tl import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,

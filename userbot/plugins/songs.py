@@ -10,7 +10,7 @@ from pathlib import Path
 from ShazamAPI import Shazam
 from telethon import types
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
 from userbot import catub

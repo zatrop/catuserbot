@@ -3,7 +3,7 @@ import base64
 
 from telethon import _tl as types
 from telethon._tl.fn.messages import GetStickerSetRequest
-from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
 
 from userbot import catub

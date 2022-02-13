@@ -1,6 +1,6 @@
 import base64
 
-from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 from telethon._tl import MessageEntityMentionName
 
 from ...Config import Config

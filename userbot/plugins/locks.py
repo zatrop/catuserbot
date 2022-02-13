@@ -3,7 +3,7 @@ import base64
 from telethon import events, functions, types
 from telethon._tl.fn.channels import EditBannedRequest
 from telethon._tl.fn.messages import EditChatDefaultBannedRightsRequest
-from telethon._tl.fn.messages import ImportChatInviteRequest as Get
+# from telethon._tl.fn.messages import ImportChatInviteRequest as Get
 from telethon._tl import ChatBannedRights
 from telethon.utils import get_display_name
 
