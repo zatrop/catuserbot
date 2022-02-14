@@ -32,7 +32,7 @@ async def setup_bot():
         To set up bot for userbot
         """
     # try:
-        await catub.connect()
+        await catub.client.connect()
 #         config = await catub(functions.help.GetConfig())
 #         for option in config.dc_options:
 #             if option.ip_address == catub._session.server_address:
