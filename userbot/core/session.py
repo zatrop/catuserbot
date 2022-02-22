@@ -1,6 +1,6 @@
 import sys
 from telethon.sessions import StringSession
-
+import asyncio
 from ..Config import Config
 from .client import CatUserBotClient
 
@@ -38,4 +38,9 @@ catub.tgbot = tgbot = CatUserBotClient(
 #     connection=ConnectionTcpAbridged,
     auto_reconnect=True,
 #     connect_retries=None,
-)._start(bot_token=Config.TG_BOT_TOKEN)
+)
+
+async def main():
+    await catub.tgbot.start(bot_token=Config.TG_BOT_TOKEN)
+    
+asyncio.run(main())
